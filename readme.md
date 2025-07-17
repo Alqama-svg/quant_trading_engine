@@ -49,11 +49,12 @@ quant_trading_engine/
 │   ├── mean_reversion.py
 │   ├── momentum.py
 │   └── pairs_trading.py
-├── tests/                       # (Optional) Unit tests
+├── tests/
+│   ├── test_backtest.py         # (Optional) Unit tests
 ├── utils/
-│   └── data_loader.py           # Optional API-based market data loader
 ├── notebooks/                   # Jupyter notebooks for prototyping/analysis
 │   └── main.ipynb               # Demo orchestrator notebook
+│   └── data_loader.py           # Optional API-based market data loader
 ├── main.py                      # Full pipeline: strategy → risk → analytics → portfolio
 ├── requirements.txt             # Project dependencies
 ├── README.md                    # Project documentation
