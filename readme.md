@@ -34,6 +34,8 @@ quant_trading_engine/
 ├── analytics/
 │   ├── performance.py           # Performance metrics
 │   └── statistical_tests.py     # t-test, bootstrap analysis
+├── data
+│   ├── .gitignore  
 ├── engine/
 │   ├── backtest.py              # Core BacktestEngine class
 │   └── execution.py             # ExecutionSimulator for slippage/fees
@@ -47,11 +49,11 @@ quant_trading_engine/
 │   ├── mean_reversion.py
 │   ├── momentum.py
 │   └── pairs_trading.py
+├── tests/                       # (Optional) Unit tests
 ├── utils/
 │   └── data_loader.py           # Optional API-based market data loader
 ├── notebooks/                   # Jupyter notebooks for prototyping/analysis
-│   └── main.ipynb              # Demo orchestrator notebook
-├── tests/                       # (Optional) Unit tests
+│   └── main.ipynb               # Demo orchestrator notebook
 ├── main.py                      # Full pipeline: strategy → risk → analytics → portfolio
 ├── requirements.txt             # Project dependencies
 ├── README.md                    # Project documentation
