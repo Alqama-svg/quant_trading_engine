@@ -1,0 +1,19 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment files
+.env
+.venv/
+
+# IDEs
+.vscode/
+.idea/
+
+# Data (redundant safety)
+data/*.csv
+data/*.xlsx
+data/*.json
