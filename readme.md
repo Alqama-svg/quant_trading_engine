@@ -206,7 +206,7 @@ jupyter notebook main.ipynb
 
 ## 🧩 License & Contributions
 
-  - This project is released under the MIT License. See LICENSE for full terms.
+  - This project is released under the [MIT License](LICENSE). See LICENSE for full terms.
 
   - Contributions, forks, and pull requests are encouraged, If you add a feature, fix an issue, or refactor, let me know!
 
