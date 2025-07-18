@@ -7,7 +7,7 @@ import yfinance as yf
 import matplotlib.pyplot as plt
 sns.set()
 
-# an 'images' folder
+# Create 'images' folder if not exists
 os.makedirs("images", exist_ok=True)
 
 # Local project modules
@@ -28,7 +28,7 @@ from risk_management.position_sizing import apply_position_sizing
 from risk_management.drawdown_limits import apply_drawdown_limit
 
 
-# Mean Reversion Strategy Backtest
+# 1. Mean Reversion Strategy Backtest (AAPL)
 strategy = MeanReversionStrategy(window=20, z_entry=1.5, z_exit=0.5)
 bt = BacktestEngine('AAPL', '2020-01-01', '2024-12-31', strategy)
 df = bt.results
@@ -36,65 +36,28 @@ df[['equity_curve', 'buy_hold']].plot(figsize=(12, 6), title="Mean Reversion: AA
 plt.savefig("images/mean_reversion_aapl.png")
 plt.close()
 
-# Execution Simulation & Analytics
+# 2. Execution Simulation and Analytics
 exec_sim = ExecutionSimulator()
 df_exec = exec_sim.adjust_returns(df)
 
 analytics = StrategyAnalytics(df_exec, return_col='net_strategy')
-summary = analytics.summary()
-print(summary)
+print(analytics.summary())
 
-df_exec[['equity_curve', 'buy_hold']].plot(figsize=(12, 6), title="Mean Reversion Strategy: AAPL")
+df_exec[['equity_curve', 'buy_hold']].plot(figsize=(12, 6), title="Execution Adjusted Strategy: AAPL")
 plt.savefig("images/execution_adjusted.png")
 plt.close()
 
-# Portfolio Strategy - AAPL, MSFT, GOOGL
-tickers = ['AAPL', 'MSFT', 'GOOGL']
-returns_df = pd.DataFrame()
-
-for ticker in tickers:
-    strat = MeanReversionStrategy()
-    bt = BacktestEngine(ticker, '2020-01-01', '2024-12-31', strat)
-    returns_df[ticker] = bt.results['strategy']
-
-returns_df.dropna(inplace=True)
-w_opt = optimize_portfolio(returns_df, risk_aversion=0.5)
-print("Optimized Weights:", w_opt)
-
-# Risk Management
-df_sl = apply_stop_loss(df_exec, stop_loss_pct=0.02)
-df_ps = apply_position_sizing(df_sl, risk_pct=0.02)
-
-df_ps['equity_curve'].plot(figsize=(12, 6), title="With Stop Loss + Position Sizing")
-plt.savefig("images/risk_management.png")
-plt.close()
-
-# Significance Testing
-analytics = StrategyAnalytics(df_exec, return_col='net_strategy')
-print(analytics.summary())
-print("Significant?", analytics.is_significant())
-
-# Performance Analytics and Significance Testing
-analytics = StrategyAnalytics(df_exec, return_col='net_strategy')
-print(analytics.summary())
-print("Significant?", analytics.is_significant())
-
-# stop loss position sizing
-df_sl = apply_stop_loss(df_exec, stop_loss_pct=0.02)
-df_ps = apply_position_sizing(df_sl, risk_pct=0.02)
-df_ps['equity_curve'].plot(figsize=(12, 6), title="With Stop Loss + Position Sizing")
-
-# Comparison of Strategies on One Asset (i.e., Mean reversion vs. momentum on the same stock.)
+# 3. Strategy Comparison: Mean Reversion vs. Momentum (MSFT)
 mr = BacktestEngine('MSFT', '2020-01-01', '2024-12-31', MeanReversionStrategy())
 mo = BacktestEngine('MSFT', '2020-01-01', '2024-12-31', MomentumStrategy(window=50))
 mr_curve = mr.results['equity_curve']
 mo_curve = mo.results['equity_curve']
 
 pd.DataFrame({'Mean Reversion': mr_curve, 'Momentum': mo_curve}).plot(figsize=(12, 6), title="Strategy Comparison: MSFT")
-plt.savefig("images/msft_strategy_comparison.png")
+plt.savefig("images/strategy_comparison.png")
 plt.close()
 
-# Pairs Trading Strategy
+# 4. Pairs Trading Strategy (KO vs. PEP)
 ko = yf.download('KO', start='2020-01-01', end='2024-12-31')[['Adj Close']].copy()
 pep = yf.download('PEP', start='2020-01-01', end='2024-12-31')[['Adj Close']].copy()
 ko.columns = ['KO']
@@ -111,8 +74,10 @@ df_pairs['equity_curve'].plot(figsize=(12, 6), title="Pairs Trading: KO vs PEP")
 plt.savefig("images/pairs_trading.png")
 plt.close()
 
-# Portfolio Optimization Comparison Across Assets
+# 5. Portfolio Optimization Across Assets
+tickers = ['AAPL', 'MSFT', 'GOOGL']
 returns_df = pd.DataFrame()
+
 for ticker in tickers:
     strat = MeanReversionStrategy()
     bt = BacktestEngine(ticker, '2020-01-01', '2024-12-31', strat)
@@ -127,6 +92,13 @@ eq_curve  = 100_000 * (1 + (returns_df * w_eq).sum(axis=1)).cumprod()
 
 pd.DataFrame({'Optimized': opt_curve, 'Equal Weighted': eq_curve}).plot(figsize=(12, 6), title="Portfolio Comparison")
 plt.savefig("images/portfolio_comparison.png")
+plt.close()
+
+# 6. Risk Management (Stop Loss + Position Sizing)
+df_sl = apply_stop_loss(df_exec, stop_loss_pct=0.02)
+df_ps = apply_position_sizing(df_sl, risk_pct=0.02)
+df_ps['equity_curve'].plot(figsize=(12, 6), title="With Stop Loss + Position Sizing")
+plt.savefig("images/risk_management.png")
 plt.close()
 
 # Final Portfolio Report
