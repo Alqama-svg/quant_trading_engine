@@ -1,7 +1,8 @@
 # Quantitative Trading Strategy Engine 🚀
 
 
-A comprehensive, modular, and extensible backtesting framework for developing, validating, and deploying quantitative trading strategies. This engine supports multiple trading approaches, built-in risk controls, performance analytics, statistical testing, and portfolio optimization — all tied together through an intuitive, reusable API.
+A comprehensive, modular, and extensible backtesting framework for developing, validating, and deploying quantitative trading strategies. This engine supports multiple trading approaches, built-in risk controls, performance analytics, statistical analysis 
+& testing, and portfolio optimization, all tied together through an intuitive and reusable API.
 
 
 ---
