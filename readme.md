@@ -75,6 +75,8 @@ quant_trading_engine/
     - Computes daily positions, returns, and equity curve
 
     - Tracks buy-and-hold benchmark alongside strategy for comparison
+  
+---
 
 2. ### Strategy Implementations
     - Mean Reversion: Z-score entry/exits for single assets
@@ -87,21 +89,27 @@ quant_trading_engine/
 from strategies.mean_reversion import MeanReversionStrategy
 strategy = MeanReversionStrategy(window=20, z_entry=1.5, z_exit=0.5)
 ```
+---
+
 3. ### Risk Management Modules
      **Apply these in sny backtest pipeline**
     
     - `apply_stop_loss(df, stop_loss_pct=0.02)`
     - `apply_position_sizing(df, risk_pct=0.02)`
     - `apply_drawdown_limit(df, max_drawdown=0.1)`
+
+---
   
-5. ### Execution Simulation
+4. ### Execution Simulation
       **Simulates per-trade cost and slippage:**
 
 ```bash
 exec_sim = ExecutionSimulator(slippage=0.0005, fee=0.0005)
 df = exec_sim.adjust_returns(df)
 ```
-6. ### Performance & Statistical Analysis
+---
+
+5. ### Performance & Statistical Analysis
       **Use `StrategyAnalytics` to compute:**
 
     - Sharpe Ratio, Calmar Ratio, Max Drawdown
@@ -113,7 +121,9 @@ analytics = StrategyAnalytics(df, return_col='net_strategy')
 print(analytics.summary())
 print("Significant?", analytics.is_significant())
 ```
-7. ### Portfolio Optimization
+---
+
+6. ### Portfolio Optimization
       **Combine strategy returns across tickers, optimize via mean-variance, compare to equal-weight:**
 
 ```bash
@@ -124,6 +134,62 @@ w_eq = equal_weight_portfolio(returns_df)
 
 ---
 
+
+## 📈 Visual Results & Analysis
+
+### 1. Mean Reversion Strategy – AAPL
+This plot compares the mean reversion strategy’s equity curve (blue) against a simple buy‑and‑hold benchmark (orange). 
+
+![Mean Reversion: AAPL](images/mean_reversion_aapl.png) 
+
+*Interpretation:* The strategy captures short-term reversals, shows periods of outperformance compared to hold, and illustrates drawdown behavior during trend shifts.
+
+---
+
+### 2. Execution‑Adjusted Equity – AAPL  
+Here we apply slippage and execution cost adjustments to the strategy’s returns.
+
+![Execution-Adjusted: AAPL](images/execution_adjusted.png) 
+
+*Interpretation:* This more conservative equity curve highlights realistic P&L after trading friction, offering a true performance estimate.
+
+---
+
+### 3. Strategy Comparison – MSFT  
+Side‑by‑side equity curves for mean‑reversion (blue) and momentum (orange) strategies on MSFT.
+
+![Strategy Comparison: MSFT](images/strategy_comparison.png)
+
+*Interpretation:* Shows how different strategy regimes (reversion vs trend) perform in different market environments.
+
+---
+
+### 4. Pairs Trading – KO vs PEP  
+Out-of-sample backtest of a mean reversion strategy on the price spread between Coca‑Cola and Pepsi.
+
+![Pairs Trading: KO vs PEP](images/pairs_trading.png) 
+
+*Interpretation:* Indicates how pair‑based mean reversion can extract arbitrage profits from cointegrated stock pairs.
+
+---
+
+### 5. Portfolio Optimization – Optimized vs Equal Weighted  
+Comparing a mean‑variance optimized portfolio against a simple equal‑weight allocation across AAPL, MSFT, and GOOGL.
+
+![Portfolio Comparison](images/portfolio_comparison.png) 
+
+*Interpretation:* Highlights the benefits of risk‑aware optimization in improving return per unit of risk.
+
+---
+
+### 6. Risk Management – Stop Loss & Position Sizing  
+Applying fixed fractional position sizing and stop‑loss rules to the AAPL mean reversion strategy.  
+
+![With Stop Loss + Position Sizing](images/risk_management.png)  
+
+*Interpretation:* Demonstrates how capital preservation techniques reduce drawdowns and smooth equity growth.
+
+---
 
 ## 📈 Example Summary (`main.py`)
 
