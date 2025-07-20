@@ -1,8 +1,12 @@
-pandas
+streamlit
 numpy
+pandas
+plotly
 matplotlib
 seaborn
 yfinance
 cvxpy
 scipy
 statsmodels
+requests
+pytz
