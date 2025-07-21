@@ -406,8 +406,7 @@ class EnhancedMultiAPIProvider:
                     'source': 'US/Eastern',
                     'session': 'WEEKEND',
                     'next_open': 'Monday 09:30 ET',
-                    'current_time_et': now_et.strftime('%H:%M ET'),
-                    'debug': f"Weekend (day {weekday})"
+                    'current_time_et': now_et.strftime('%H:%M ET')
                 }
             
             # Market hours: 9:30 AM (9.5) to 4:00 PM (16.0) ET
@@ -420,8 +419,7 @@ class EnhancedMultiAPIProvider:
                     'source': 'US/Eastern',
                     'session': 'REGULAR',
                     'time_to_close': f"{minutes_to_close}m",
-                    'current_time_et': now_et.strftime('%H:%M ET'),
-                    'debug': f"Open: {current_time_decimal:.2f} is between 9.5-16.0"
+                    'current_time_et': now_et.strftime('%H:%M ET')
                 }
             elif current_time_decimal < 9.5:
                 # Pre-market
@@ -432,8 +430,7 @@ class EnhancedMultiAPIProvider:
                     'source': 'US/Eastern',
                     'session': 'PRE-MARKET',
                     'next_open': f"{minutes_to_open}m",
-                    'current_time_et': now_et.strftime('%H:%M ET'),
-                    'debug': f"Pre-market: {current_time_decimal:.2f} < 9.5"
+                    'current_time_et': now_et.strftime('%H:%M ET')
                 }
             else:
                 # After-hours
@@ -442,8 +439,7 @@ class EnhancedMultiAPIProvider:
                     'source': 'US/Eastern',
                     'session': 'AFTER-HOURS',
                     'next_open': 'Tomorrow 09:30 ET',
-                    'current_time_et': now_et.strftime('%H:%M ET'),
-                    'debug': f"After-hours: {current_time_decimal:.2f} >= 16.0"
+                    'current_time_et': now_et.strftime('%H:%M ET')
                 }
                 
         except ImportError:
@@ -456,8 +452,7 @@ class EnhancedMultiAPIProvider:
                 'source': 'No pytz library',
                 'session': 'CLOSED',
                 'next_open': 'Install pytz',
-                'current_time_et': now.strftime('%H:%M Local'),
-                'debug': 'pytz library missing - install it'
+                'current_time_et': now.strftime('%H:%M Local')
             }
             
         except Exception as e:
@@ -466,8 +461,7 @@ class EnhancedMultiAPIProvider:
                 'is_open': False,
                 'source': 'Error',
                 'session': 'ERROR',
-                'current_time_et': 'Unknown',
-                'debug': f'Error: {str(e)}'
+                'current_time_et': 'Unknown'
             } 
     def get_historical_data(self, symbol: str, period: str = "1y") -> pd.DataFrame:
         """Get historical data with API failover"""
@@ -908,7 +902,7 @@ def load_enhanced_css():
 
 # Page config for performance
 st.set_page_config(
-    page_title="QuantEdge Pro - Enterprise",
+    page_title="QuantEdge Pro",
     page_icon="⚡",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -1127,7 +1121,7 @@ with st.sidebar:
 display_enhanced_latency()
 
 if not run_button:
-    st.markdown('<div class="terminal-header">QUANTEDGE PRO ENTERPRISE</div>', unsafe_allow_html=True)
+    st.markdown('<div class="terminal-header">QUANTEDGE PRO</div>', unsafe_allow_html=True)
     
     # Enhanced market overview
     st.markdown('<div class="section-header">GLOBAL MARKET OVERVIEW</div>', unsafe_allow_html=True)
@@ -1697,7 +1691,7 @@ API KEYS LOADED: {len([k for k, v in data_provider.api_keys.items() if v != 'dem
 # Enhanced terminal footer
 st.markdown("""
 <div style="background: linear-gradient(135deg, #1a1a2e, #16213e); border: 1px solid #16213e; border-radius: 6px; padding: 1rem; margin-top: 2rem; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #71717a; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);">
-    <span style="color: #00d4ff; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; text-shadow: 0 0 3px rgba(0, 212, 255, 0.3);">QUANTEDGE PRO ENTERPRISE</span> • 
+    <span style="color: #00d4ff; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; text-shadow: 0 0 3px rgba(0, 212, 255, 0.3);">QUANTEDGE PRO</span> • 
     Multi-API Trading Terminal • 
     Real-time Data Feeds • 
     Professional Analytics • 
