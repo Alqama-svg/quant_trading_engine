@@ -1,16 +1,8 @@
-streamlit
-numpy
-pandas
-plotly
-matplotlib
-seaborn
-yfinance
-cvxpy
-scipy
-statsmodels
-requests
-<<<<<<< HEAD
-pytz
-=======
-pytz
->>>>>>> 79f1d27ea660216a813783126d6570e2d0b8d2b7
+streamlit>=1.28.0
+pandas>=1.5.0
+plotly>=5.15.0
+yfinance>=0.2.0
+numpy>=1.24.0
+requests>=2.31.0
+python-dateutil>=2.8.0
+pytz>=2023.3
