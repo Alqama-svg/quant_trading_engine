@@ -9,4 +9,8 @@ cvxpy
 scipy
 statsmodels
 requests
+<<<<<<< HEAD
 pytz
+=======
+pytz
+>>>>>>> 79f1d27ea660216a813783126d6570e2d0b8d2b7
