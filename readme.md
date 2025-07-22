@@ -1,5 +1,11 @@
 # Quantitative Trading Strategy Engine 🚀
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Railway-0066CC?style=for-the-badge&logo=railway)](https://quanttradingengine-production.up.railway.app)
+[![Python](https://img.shields.io/badge/Python-3.9+-3776AB?style=for-the-badge&logo=python)](https://python.org)
+[![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit)](https://streamlit.io)
+[![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
+
+🌐 **Live Demo:** [https://quanttradingengine-production.up.railway.app](https://quanttradingengine-production.up.railway.app)
 
 A comprehensive, modular, and extensible backtesting framework for developing, validating, and deploying quantitative trading strategies. This engine supports multiple trading approaches, built-in risk controls, performance analytics, statistical analysis 
 & testing, and portfolio optimization, all tied together through an intuitive and reusable API.
@@ -210,12 +216,18 @@ Optimize AAPL, MSFT, GOOGL portfolio → plot performance
 
 ## 🔧 Installation & Setup
 
+### 🌐 Try Live Demo
+**No installation needed!** Try the live version:
+👉 [https://quanttradingengine-production.up.railway.app](https://quanttradingengine-production.up.railway.app)
+
+### 💻 Local Development Setup
 ```bash
-git clone https://github.com/your_user/quant_trading_engine.git
+git clone https://github.com/Alqama-svg/quant_trading_engine.git
 cd quant_trading_engine
 pip install -r requirements.txt
 ```
-### Then run full pipeline:
+
+### Run locally:
 
 ```bash
 python main.py
@@ -232,10 +244,15 @@ jupyter notebook main.ipynb
 ## 📚 Dependencies
     
     
-  - pandas, numpy, matplotlib, seaborn
-  - yfinance
-  - cvxpy
-  - scipy, statsmodels
+**Core Libraries:**
+- pandas, numpy, matplotlib, seaborn
+- yfinance
+- cvxpy  
+- scipy, statsmodels
+
+**Deployment:**
+- streamlit>=1.28.0 (for web interface)
+- Railway platform (for production hosting)
 
 
 ---
@@ -259,13 +276,13 @@ jupyter notebook main.ipynb
 
 ## 💼 Use Cases & Extensions
 
-  - Academic Research: Test alpha-generating hypotheses rigorously.
-
-  - Quant Interviews: Demonstrate data pipelines, metrics, and optimization cases.
-
-  - Client Reporting: Use generated charts and metrics in presentations.
-
-  - Production Pivot: Hook into live data feeds, cloud schedulers, and UI dashboards.
+  - **Academic Research:** The engine provides t-tests and bootstrap resampling for strategy validation, making it ideal for academic papers, thesis projects,     and research publications. Easily extensible for custom performance metrics and novel trading strategy development with proper statistical significance testing.
+  - **Quant Interviews:** The visualization suite produces publication-ready equity curves, drawdown analysis, and strategy comparison plots. Export results for regulatory reporting, investor updates, and fund performance documentation with standardized financial metrics.
+  - **Strategy Development Framework:** The standardized interface allows quick implementation of custom signals, risk rules, and optimization objectives. Compare multiple strategies side-by-side and analyze performance attribution across different market regimes and asset classes.
+  - **Client Reporting:** The visualization suite produces publication-ready equity curves, drawdown analysis, and strategy comparison plots. Export results for regulatory reporting, investor updates, and fund performance documentation with standardized financial metrics.
+  - **Production Pivot:** The modular design allows easy connection to brokerage APIs, automated execution systems, and monitoring infrastructure. Scale from research prototype to production trading system with minimal code changes.
+  - **High-Frequency Research:** Extend the execution simulation module for high-frequency trading research, including market microstructure analysis, latency modeling, and transaction cost optimization. The framework supports custom fee structures, slippage models, and order book dynamics for realistic HFT strategy evaluation.
+  - **Multi-Asset Trading:** The portfolio optimization module supports cross-asset correlation analysis, sector rotation strategies, and alternative risk parity implementations across diverse investment universes.
 
 
 ---
