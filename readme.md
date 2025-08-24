@@ -5,7 +5,7 @@
 [![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit)](https://streamlit.io)
 [![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
 
-🌐 **Live Demo:** [https://quanttradingengine-production.up.railway.app](https://quanttradingengine-production.up.railway.app)
+🌐 **Live Demo:** https://quanttradingengine-renxpecutach9vh4hpwbmz.streamlit.app/
 
 A comprehensive, modular, and extensible backtesting framework for developing, validating, and deploying quantitative trading strategies. This engine supports multiple trading approaches, built-in risk controls, performance analytics, statistical analysis 
 & testing, and portfolio optimization, all tied together through an intuitive and reusable API.
@@ -311,5 +311,6 @@ Build, backtest, analyze, and operate trading strategies — confidently and sys
 
 
 ---
+
 
 
